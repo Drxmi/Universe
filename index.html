@@ -3,582 +3,368 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduConnect: The Ultimate Home Tutoring Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Trivedi London - Crafting India's Finest Aromas</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
+        /* CSS Reset and Global Styles */
         :root {
-            --primary-color: #4A90E2; /* Blue */
-            --secondary-color: #50E3C2; /* Teal */
-            --accent-color: #F5A623; /* Orange */
-            --text-dark: #333;
-            --text-light: #666;
-            --bg-light: #f8faff;
-            --bg-white: #ffffff;
-            --border-color: #e0e0e0;
+            --maroon: #6A040F;
+            --saffron: #E49B0F;
+            --gold: #D4AF37;
+            --cream: #F8F4E3;
+            --charcoal: #2B2B2B;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
         }
 
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Utility Classes */
         .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
         }
 
-        /* Header */
-        header {
-            background-color: var(--bg-white);
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border-color);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--maroon);
+            margin-bottom: 1rem;
         }
 
-        header .container {
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+        
+        /* For On-Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- 1. Navigation Bar --- */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: background-color 0.4s ease, padding 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            background-color: var(--maroon);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap; /* For mobile responsiveness */
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .logo {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: var(--primary-color);
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: #fff;
             text-decoration: none;
+            font-weight: 700;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 0.25rem;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .hamburger .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            background-color: white;
+        }
+
+
+        /* --- 2. Hero Section --- */
+        .hero {
+            height: 100vh;
+            position: relative;
             display: flex;
             align-items: center;
-        }
-        .logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
             padding: 0;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-left: 30px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: var(--primary-color);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: var(--bg-white);
-            border: 2px solid var(--primary-color);
-        }
-
-        .btn-primary:hover {
-            background-color: #3a7bd5; /* Darker primary */
-            border-color: #3a7bd5;
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--primary-color);
-            color: var(--bg-white);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color), #2196F3); /* Gradient */
-            color: white;
-            padding: 100px 0;
-            text-align: center;
-            position: relative;
             overflow: hidden;
-            border-radius: 0 0 50px 50px; /* Rounded bottom corners */
         }
 
-        .hero::before { /* Animated background element */
-            content: '';
+        #bg-video {
             position: absolute;
-            top: -50px;
-            left: -50px;
-            width: 200px;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: moveShape 15s infinite alternate ease-in-out;
-            z-index: 1;
-        }
-        .hero::after { /* Another animated background element */
-            content: '';
-            position: absolute;
-            bottom: -70px;
-            right: -70px;
-            width: 250px;
-            height: 250px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
-            animation: moveShape 18s infinite alternate-reverse ease-in-out;
-            z-index: 1;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: -2;
         }
 
-        @keyframes moveShape {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(50px, 30px) scale(1.1); }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
         }
 
         .hero-content {
-            position: relative;
-            z-index: 2;
+            z-index: 1;
         }
 
-        .hero h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            font-weight: 700;
+        .hero-content h1 {
+            font-size: 5rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            animation: reveal-text 1.5s ease-out forwards;
         }
 
-        .hero p {
-            font-size: 1.2em;
-            margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+        .hero-content p {
+            font-size: 1.5rem;
+            font-weight: 400;
+            opacity: 0;
+            animation: reveal-text 1.5s 0.5s ease-out forwards;
         }
 
-        .hero .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        @keyframes reveal-text {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* Sections */
-        .section {
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        .section-subtitle {
-            font-size: 1.1em;
-            color: var(--text-light);
-            margin-bottom: 60px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .feature-card {
-            background-color: var(--bg-white);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: left;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .feature-card i {
-            font-size: 3em;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5em;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .feature-card p {
-            color: var(--text-light);
-            font-size: 0.95em;
-        }
-
-        .curriculum-boards {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-
-        .board-tag {
-            background-color: var(--secondary-color);
-            color: var(--bg-white);
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1em;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .visual-showcase {
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-            margin-top: 60px;
-        }
-
-        .visual-item {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            text-align: left;
-            flex-wrap: wrap;
-        }
-
-        .visual-item:nth-child(even) {
-            flex-direction: row-reverse; /* Alternate image and text */
-        }
-
-        .visual-item img {
-            flex: 1;
-            min-width: 300px;
-            max-width: 550px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            transition: transform 0.5s ease;
-        }
-        .visual-item img:hover {
-            transform: scale(1.02);
-        }
-
-        .visual-item .content {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .visual-item .content h3 {
-            font-size: 2em;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .visual-item .content p {
-            font-size: 1.1em;
-            color: var(--text-light);
-        }
-
-        /* Call to Action */
-        .cta {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 100px 0;
-            text-align: center;
-            border-radius: 50px 50px 0 0;
-            margin-top: 60px;
-        }
-
-        .cta h2 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-
-        .cta p {
-            font-size: 1.3em;
-            margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--text-dark);
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        footer .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .footer-nav ul {
-            display: flex;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            gap: 25px;
-        }
-        .footer-nav a {
-            color: white;
+        .btn-primary {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 2.5rem;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
             text-decoration: none;
-            transition: color 0.3s ease;
+            font-weight: 700;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            opacity: 0;
+            animation: reveal-text 1.5s 1s ease-out forwards;
         }
-        .footer-nav a:hover {
-            color: var(--secondary-color);
+
+        .btn-primary:hover {
+            background-color: var(--gold);
+            color: var(--maroon);
         }
 
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            header .container {
-                flex-direction: column;
-                gap: 20px;
-            }
-            nav ul {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-            nav ul li {
-                margin-left: 0;
-            }
-
-            .hero h1 {
-                font-size: 2.5em;
-            }
-            .hero p {
-                font-size: 1em;
-            }
-            .hero .btn-group {
-                flex-direction: column;
-            }
-            .btn {
-                width: 80%;
-                margin: 0 auto;
-            }
-
-            .section-title {
-                font-size: 2em;
-            }
-            .section-subtitle {
-                font-size: 0.9em;
-            }
-
-            .visual-item {
-                flex-direction: column;
-                text-align: center;
-            }
-            .visual-item:nth-child(even) {
-                flex-direction: column; /* Reset alternation for small screens */
-            }
-            .visual-item img {
-                max-width: 100%;
-            }
-
-            .cta h2 {
-                font-size: 2em;
-            }
-            .cta p {
-                font-size: 1em;
-            }
-
-            footer .container {
-                flex-direction: column;
-            }
-            .footer-nav ul {
-                flex-direction: column;
-                gap: 10px;
-            }
+        /* --- 3. About Us Section --- */
+        #about .container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
         }
-    </style>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
 
-    <header>
-        <div class="container">
-            <a href="#" class="logo">
-                <img src="https://via.placeholder.com/40/4A90E2/FFFFFF?text=EC" alt="EduConnect Logo">
-                EduConnect
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#curriculum">Curriculum</a></li>
-                    <li><a href="#tutors">Our Tutors</a></li>
-                    <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#" class="btn btn-secondary">Login</a></li>
-                    <li><a href="#" class="btn btn-primary">Register</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
 
-    <main>
-        <section class="hero">
-            <div class="container hero-content">
-                <h1>Unlock Your Potential with Personalized Home Tutoring</h1>
-                <p>EduConnect offers advanced, mobile-friendly learning for CBSE, ICSE, and MP boards. Experience interactive lessons, live sessions, and track your progress effortlessly.</p>
-                <div class="btn-group">
-                    <a href="#" class="btn btn-primary">Find a Tutor</a>
-                    <a href="#" class="btn btn-secondary">Explore Courses</a>
-                </div>
-            </div>
-        </section>
+        .about-content h2 {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-content p {
+            margin-bottom: 1rem;
+        }
 
-        <section id="features" class="section">
-            <div class="container">
-                <h2 class="section-title">Why Choose EduConnect?</h2>
-                <p class="section-subtitle">We blend cutting-edge technology with expert educators to create an unparalleled learning experience for every student.</p>
+        /* --- 4. Our Craft Section --- */
+        #craft {
+            background-color: #fff;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
 
-                <div class="grid-3">
-                    <div class="feature-card">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                        <h3>Expert Tutors</h3>
-                        <p>Access highly qualified and experienced tutors across all major subjects and boards.</p>
-                        <!-- Integration point: This would link to dynamic tutor profiles -->
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-mobile-alt"></i>
-                        <h3>Mobile & Desktop Friendly</h3>
-                        <p>Seamless learning experience on any device, from smartphones to desktops.</p>
-                        <!-- Integration point: Responsive design is handled by CSS, but dynamic content needs to be adaptive. -->
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-lightbulb"></i>
-                        <h3>Interactive Lessons</h3>
-                        <p>Engage with animated explanations, interactive quizzes, and simulations.</p>
-                        <!-- Integration point: Requires JavaScript for animations (e.g., Lottie, GSAP) and interactive elements. -->
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-video"></i>
-                        <h3>Live 1-on-1 Sessions</h3>
-                        <p>Personalized live video tutoring with shared whiteboards and real-time feedback.</p>
-                        <!-- Integration point: Requires WebRTC API integration (e.g., Twilio, Jitsi) and backend. -->
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>Track Your Progress</h3>
-                        <p>Detailed analytics and performance reports to monitor growth and identify areas for improvement.</p>
-                        <!-- Integration point: Requires backend data storage and frontend charting libraries (e.g., Chart.js, Recharts). -->
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-book-open"></i>
-                        <h3>Comprehensive Curriculum</h3>
-                        <p>Content aligned perfectly with CBSE, ICSE, and MP board syllabi.</p>
-                        <!-- Integration point: Dynamic content loading based on selected board/grade. -->
-                    </div>
-                </div>
-            </div>
-        </section>
+        .product-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
 
-        <section id="curriculum" class="section" style="background-color: var(--bg-white);">
-            <div class="container">
-                <h2 class="section-title">Curriculum Boards We Cover</h2>
-                <p class="section-subtitle">Our content is meticulously designed to meet the specific requirements of India's leading educational boards.</p>
-                <div class="curriculum-boards">
-                    <span class="board-tag">CBSE Board</span>
-                    <span class="board-tag">ICSE Board</span>
-                    <span class="board-tag">MP Board</span>
-                </div>
-                <!-- Integration point: More detailed curriculum breakdown would be dynamic here -->
-            </div>
-        </section>
+        .product-card .img-container {
+            overflow: hidden;
+        }
 
-        <section id="visuals" class="section">
-            <div class="container">
-                <h2 class="section-title">Experience Learning Visually</h2>
-                <p class="section-subtitle">Engaging animations and rich imagery make complex topics easy to understand and remember.</p>
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
 
-                <div class="visual-showcase">
-                    <div class="visual-item">
-                        <img src="https://via.placeholder.com/550x350/50E3C2/FFFFFF?text=Interactive+Animation" alt="Interactive Animation Example">
-                        <div class="content">
-                            <h3>Animated Explanations</h3>
-                            <p>See concepts come to life! Our animated lessons break down science, math, and history into digestible, visual stories. Imagine watching the water cycle or a complex chemical reaction unfold before your eyes.</p>
-                            <!-- Integration point: This would be an actual animation (Lottie/SVG animation) -->
-                        </div>
-                    </div>
-                    <div class="visual-item">
-                        <img src="https://via.placeholder.com/550x350/4A90E2/FFFFFF?text=Live+Session+Screenshot" alt="Live Tutoring Session">
-                        <div class="content">
-                            <h3>Real-Time Collaborative Learning</h3>
-                            <p>Connect with your tutor in a live virtual classroom. Use our interactive whiteboard to solve problems together, share documents, and get immediate, personalized feedback. It's just like being in the same room!</p>
-                            <!-- Integration point: This would be a live video/whiteboard component -->
-                        </div>
-                    </div>
-                    <div class="visual-item">
-                        <img src="https://via.placeholder.com/550x350/F5A623/FFFFFF?text=Progress+Dashboard" alt="Student Progress Dashboard">
-                        <div class="content">
-                            <h3>Smart Progress Tracking</h3>
-                            <p>Your personalized dashboard shows your strengths, areas for improvement, and overall progress with engaging charts and graphs. Stay motivated and see how far you've come!</p>
-                            <!-- Integration point: This would be a dynamic chart/graph library -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        .product-card:hover img {
+            transform: scale(1.1);
+        }
 
-        <section id="cta" class="cta">
-            <div class="container">
-                <h2>Ready to Start Your Learning Journey?</h2>
-                <p>Join thousands of students and transform your academic performance with EduConnect. Your success story begins here.</p>
-                <a href="#" class="btn btn-primary" style="background-color: white; color: var(--primary-color);">Get Started Today!</a>
-            </div>
-        </section>
-    </main>
+        .product-info {
+            padding: 1.5rem;
+        }
 
-    <footer>
-        <div class="container">
-            <div class="footer-info">
-                <p>&copy; 2023 EduConnect. All rights reserved.</p>
-            </div>
-            <nav class="footer-nav">
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Support</a></li>
-                </ul>
-            </nav>
-        </div>
-    </footer>
+        .product-info h3 {
+            font-size: 1.4rem;
+        }
+        
+        .process-timeline {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .process-step {
+            max-width: 200px;
+        }
+        
+        .process-icon {
+            font-size: 3rem;
+            color: var(--saffron);
+            margin-bottom: 1rem;
+        }
 
-</body>
-</html>
+        /* --- 5. Global Reach Section --- */
+        #global-reach {
+            text-align: center;
+        }
+
+        #map-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        #world-map {
+            width: 100%;
+            height: auto;
+            stroke: #ccc;
+            stroke-width: 1;
+        }
+
+        #world-map .land {
+            fill: #ddd;
+            transition: fill 0.3s ease;
+        }
+
+        #world-map .region:hover {
+            fill: var(--saffron);
+            cursor: pointer;
+        }
+        
+        #tooltip {
+            position: absolute;
+            background-color: var(--charcoal);
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            white-space: nowrap;
+        }
+
+
+        /* --- 6. Contact Section --- */
+        #contact {
+            position: relative;
+            background-color: var(--charcoal);
+            color: var(--cream);
+            /* Parallax effect */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='%236A040F' fill-opacity='0.1'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3
